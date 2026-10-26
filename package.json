@@ -1,0 +1,15 @@
+{
+  "name": "nexo-pedidos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aplicacion de pedidos con API REST Node.js, Express y PostgreSQL",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  }
+}

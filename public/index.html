@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nexo Pedidos | Node.js + PostgreSQL</title>
+  <link rel="stylesheet" href="/estilos.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="site">
+    <aside class="side">
+      <div class="brand"><span class="symbol">N<span>.</span></span><span>NEXO <small>CLOUD OPERATIONS</small></span></div>
+      <div class="group-title">MENU PRINCIPAL</div>
+      <a href="/" class="side-link selected"><span>▤</span> Pedidos</a>
+      <a href="/api" class="side-link"><span>⌘</span> Documentacion API</a>
+      <a href="/api/salud" class="side-link"><span>◌</span> Estado del sistema</a>
+      <div class="side-meta"><span class="pulse"></span> API operativa<br><small>Render · Node.js · PostgreSQL</small></div>
+    </aside>
+    <main>
+      <header class="main-head">
+        <div><div class="overline">CENTRO DE CONTROL / PEDIDOS</div><h1>Gestion de pedidos<span>.</span></h1><p>Consulta y administra las ordenes de tu negocio en tiempo real.</p></div>
+        <div class="top-right"><span class="live"><i></i> EN LINEA</span><span class="avatar">NX</span></div>
+      </header>
+      <section class="metrics">
+        <div class="metric"><div class="metric-label">PEDIDOS TOTALES <span>↗</span></div><strong id="totalPedidos">—</strong><p>Registros en PostgreSQL</p></div>
+        <div class="metric"><div class="metric-label">PENDIENTES <span>◌</span></div><strong id="pendientes">—</strong><p>Por procesar</p></div>
+        <div class="metric"><div class="metric-label">VENTAS REGISTRADAS <span>$</span></div><strong id="ventas">—</strong><p>Importe acumulado (USD)</p></div>
+      </section>
+      <section class="workgrid">
+        <div class="panel new-panel">
+          <div class="section-label">01 / NUEVO REGISTRO</div><h2 id="formTitle">Crear pedido</h2><p class="expl">Agrega una nueva orden o actualiza sus datos.</p>
+          <form id="pedidoForm">
+            <label>Nombre del cliente<input id="cliente" name="cliente" type="text" maxlength="100" required placeholder="Ej. Maria Lopez"></label>
+            <label>Descripcion del pedido<input id="concepto" name="concepto" type="text" maxlength="180" required placeholder="Ej. Computadora de escritorio"></label>
+            <div class="two"><label>Monto total (USD)<input id="total" name="total" type="number" min="0" step="0.01" max="99999999.99" required placeholder="0.00"></label><label>Estado<select id="estado" name="estado"><option>Pendiente</option><option>En proceso</option><option>Completado</option></select></label></div>
+            <button id="submitBtn" class="submit" type="submit">+ Guardar pedido <span>↗</span></button>
+            <button id="cancelBtn" class="cancel" type="button" hidden>Cancelar edicion</button>
+          </form>
+        </div>
+        <div class="panel records">
+          <div class="section-label">02 / HISTORIAL</div>
+          <div class="records-header"><div><h2>Pedidos registrados</h2><p class="expl">Todos los movimientos almacenados en la nube.</p></div><button class="refresh" id="refreshBtn" type="button">↻ Actualizar</button></div>
+          <div id="notice" class="notice" role="status" aria-live="polite"></div>
+          <div class="table-wrap"><table><thead><tr><th>CLIENTE / PEDIDO</th><th>MONTO</th><th>ESTADO</th><th>OPCIONES</th></tr></thead><tbody id="tabla"><tr><td colspan="4" class="empty">Cargando pedidos...</td></tr></tbody></table></div>
+        </div>
+      </section>
+      <footer><span>© NEXO CLOUD · PARCIAL 2</span><span>APLICACION B — NODE.JS / EXPRESS / POSTGRESQL / RENDER</span></footer>
+    </main>
+  </div>
+</body>
+</html>
